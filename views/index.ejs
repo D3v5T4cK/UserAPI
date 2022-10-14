@@ -7,8 +7,20 @@
                 <a href="/addUser" class="border-shadow">
                     <span class="text-gradient">New User <i class="fas fa-user"></i></span>
                 </a>
+                <select id="selectType">
+                    <option>Select</option>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="gender">Gender</option>
+                    <option value="location">Location</option>
+                    <option value="address">Address</option>
+                  </select>
+                <input type="text" name="search" onkeyup="sendData(this)"/>
+                <a onclick="getUser()" class="border-shadow hoverclass">
+                    <span class="text-gradient">Generate User <i class="fas fa-user"></i></span>
+                </a>
             </div>
-
             <form action="/" method="POST">
                 <table class="table">
                     <thead class="thead-dark">
@@ -25,6 +37,7 @@
                         <%- include('include/_show') %>
                     </tbody>
                 </table>
+                <section id="searchResults"></section>
             </form>
         </div>
     </main>
