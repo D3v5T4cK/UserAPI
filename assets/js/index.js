@@ -1,42 +1,42 @@
-$("#add_user").submit(function(event){
+$("#add_user").submit(function (event) {
     alert("Data Inserted Successfully!");
 })
 
-$("#update_user").submit(function(event){
+$("#update_user").submit(function (event) {
     event.preventDefault();
 
     var unindexed_array = $(this).serializeArray();
     var data = {}
 
-    $.map(unindexed_array, function(n, i){
+    $.map(unindexed_array, function (n, i) {
         data[n['name']] = n['value']
     })
 
 
     var request = {
-        "url" : `http://localhost:3000/api/users/${data.id}`,
-        "method" : "PUT",
-        "data" : data
+        "url": `http://localhost:3000/api/users/${data.id}`,
+        "method": "PUT",
+        "data": data
     }
 
-    $.ajax(request).done(function(response){
+    $.ajax(request).done(function (response) {
         alert("Data Updated Successfully!");
     })
 
 })
 
-if(window.location.pathname == "/"){
+if (window.location.pathname == "/") {
     $ondelete = $(".table tbody td a.delete");
-    $ondelete.click(function(){
+    $ondelete.click(function () {
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:3000/api/users/${id}`,
-            "method" : "DELETE"
+            "url": `http://localhost:3000/api/users/${id}`,
+            "method": "DELETE"
         }
 
-        if(confirm("Do you really want to delete this record?")){
-            $.ajax(request).done(function(response){
+        if (confirm("Do you really want to delete this record?")) {
+            $.ajax(request).done(function (response) {
                 alert("Data Deleted Successfully!");
                 location.reload();
             })
@@ -47,19 +47,19 @@ if(window.location.pathname == "/"){
 
 async function getUser() {
     alert("Random User added from API");
-    const re =  await fetch('https://randomuser.me/api');
-    const { results } =  await re.json();
+    const re = await fetch('https://randomuser.me/api');
+    const { results } = await re.json();
     console.log(results);
     fetch('/api/users', {
-        method:'POST',
-        headers: {'Content-Type' : 'application/json'},
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            
-            "gender":results[0].gender,
-            "title":results[0].name.title,
-            "first" : results[0].name.first,
+
+            "gender": results[0].gender,
+            "title": results[0].name.title,
+            "first": results[0].name.first,
             "last": results[0].name.last,
-            "city":  results[0].location.city,
+            "city": results[0].location.city,
             "state": results[0].location.state,
             "country": results[0].location.country,
             "postcode": results[0].location.postcode,
@@ -69,50 +69,52 @@ async function getUser() {
             "age": results[0].dob.age,
             "phonenumber": results[0].phone,
             "password": results[0].login.password,
-            "picture":"daddy.png"
+            "picture": "daddy.png"
         })
     }).then(response => {
         if (response.redirected) {
             window.location.href = response.url;
         }
     })
-    .catch(function (err) {
-        console.info(err + " url: " + url);
-    });
+        .catch(function (err) {
+            console.info(err + " url: " + url);
+        });
 }
 
-function sendData(e)
-{
+function sendData(e) {
     const searchResults = document.getElementById('searchResults')
     const selectType = document.getElementById('selectType').value;
     let match = e.value.match(/^[a-zA-Z0-9@._]*/);
     let match2 = e.value.match(/\s*/);
-    if(match2[0] === e.value)
-    {
-        searchResults.innerHTML='';
+    if (match2[0] === e.value) {
+        searchResults.innerHTML = '';
         return;
     }
-    if(match[0] === e.value)
-    {
+    if (match[0] === e.value) {
         fetch('/api/search', {
-            method:'POST',
-            headers: {'Content-Type' : 'application/json'},
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                type:selectType,
-                search:e.value
+                type: selectType,
+                search: e.value
             })
-            }).then(res => res.json()).then(data => {
-                let payload = data.result;
-                searchResults.innerHTML = '';
-                if(payload.length < 1)
-                {
-                    searchResults.innerHTML = '<p>Sorry no users found</p>';
-                    return;
-                }
-                payload.forEach(element => {
-                    searchResults.innerHTML += '<hr>';
-                    searchResults.innerHTML += `<a href="/user/${element._id}"><p>${element.name.first}</p></a>`
-                });
+        }).then(res => res.json()).then(data => {
+            let payload = data.result;
+            searchResults.innerHTML = '';
+            if (payload.length < 1) {
+                searchResults.innerHTML = '<p>Sorry no users found</p>';
+                return;
+            }
+            payload.forEach(element => {
+                searchResults.innerHTML += `<tr><td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
+                    <a href="/updateUser?id=${element._id}" class="btn border-shadow update">
+                        <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                    </a>
+                    <a class="btn border-shadow delete" href="/deleteUser?id=${element._id}">
+                        <span class="text-gradient"><i class="fas fa-times"></i></span>
+                    </a>
+                </td></tr>`
+            });
         })
         return;
     }
