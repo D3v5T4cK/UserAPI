@@ -30,7 +30,7 @@ a {
 
 .d-flex{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .justify-between{
@@ -229,4 +229,8 @@ table{
 #add_user .form-group .btn:hover{
     background-color: var(--dark);
     color: var(--border);
+}
+
+.hoverclass:hover{
+    cursor: pointer;
 }
