@@ -90,3 +90,36 @@ exports.delete = (req, res) => {
         });
     });
 }
+
+exports.search = async (request, response)=>{
+    let type = request.body.type.trim();
+    let search = request.body.search.trim();
+    if (type == "name") {
+        let users = await signUpTemplateCopy.find({ "name.first": {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "email") {
+        let users = await signUpTemplateCopy.find({ email: {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "phone") {
+        let users = await signUpTemplateCopy.find({ phone: {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "gender") {
+        let users = await signUpTemplateCopy.find({ gender: {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "location") {
+        let users = await signUpTemplateCopy.find({ "location.postcode": {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "address") {
+        let users = await signUpTemplateCopy.find({ "location.city": {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+    if (type == "dob") {
+        let users = await signUpTemplateCopy.find({ "dob.date": {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        response.send({ result: users })
+    }
+}
