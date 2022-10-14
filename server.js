@@ -7,7 +7,7 @@ const cors = require('cors')
 
 const app = express()
 
-dotenv.config({path:'config.env'})
+// dotenv.config({path:'config.env'})
 const PORT = process.env.PORT||8080
 
 app.use(morgan("tiny"))
