@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 const axios = require('axios')
 const { response } = require('express')
 
