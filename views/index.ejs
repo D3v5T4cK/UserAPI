@@ -21,6 +21,9 @@
                     <span class="text-gradient">Generate User <i class="fas fa-user"></i></span>
                 </a>
             </div>
+            <br>
+            <br>
+            <h2>Recently Added Users</h2>
             <form action="/" method="POST">
                 <table class="table">
                     <thead class="thead-dark">
@@ -37,9 +40,12 @@
                         <%- include('include/_show') %>
                     </tbody>
                 </table>
-                <section id="searchResults"></section>
+                <br>
+                <br>
+                <h2>Search Results</h2>
+                <table class="table" id="searchResults">
+                </table>
             </form>
         </div>
     </main>
-
 <%- include('include/_footer') %>

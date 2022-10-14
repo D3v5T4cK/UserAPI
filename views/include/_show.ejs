@@ -1,4 +1,5 @@
-<% for(var i = 0; i < users.length; i++) { %>
+
+<% for(var i = users.length-1; i > users.length-4; i--) { %>
     <tr>
         <td><%= users[i].name.first %></td>
         <td><%= users[i].email %></td>
@@ -14,4 +15,4 @@
             </a>
         </td>
     </tr>
-    <% } %>
+<% } %>
