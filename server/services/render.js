@@ -25,7 +25,7 @@ exports.update_user = (req, res)=>{
 
 exports.delete_user = (req, res)=>{
     const id = req.query.id
-    axios.delete('https://d3v5t4ck.herokuapp.com/api/users'+id)
+    axios.delete('https://d3v5t4ck.herokuapp.com/api/users/'+id)
     .then(
         res.redirect("/")).catch(function (err) {
         console.log(err);
