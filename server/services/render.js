@@ -22,3 +22,13 @@ exports.update_user = (req, res)=>{
         res.send(err)
     })
 }
+
+exports.delete_user = (req, res)=>{
+    const id = req.query.id
+    fetch('http://localhost:3000/api/users/' + id, {
+        method: 'DELETE'
+    }).then(
+        res.redirect("/")).catch(function (err) {
+        console.log(err);
+    });
+}
