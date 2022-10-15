@@ -1,7 +1,18 @@
 const signUpTemplateCopy = require('../model/model')
-const fs=require('fs');
+const axios=require('axios');
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
+    // axios('https://randomuser.me/api').then(response => {
+    //     // GET request was successful, store the users in state
+    //   res.send(response.data);
+    //   });
+ 
+    // console.log(s.results[0])
+    // // console.log(results[0])
+    const {data} = await axios.get('https://randomuser.me/api')
+    const details = data.results[0];
+    console.log(details)
+ 
     if (!req.body) {
         res.status(400).send({ message: "Content can't be empty!" })
         return;
@@ -30,11 +41,12 @@ exports.create = (req, res) => {
             },
             phone: req.body.phonenumber,
             picture: req.body.picture,
-            img:{
-                data:fs.readFileSync(__dirname+"/uploads/file.jpg")
-                ,
-                contentType:"image/png",
-              },
+            thumbnail:details.picture.thumbnail,
+            // img:{
+            //     data:fs.readFileSync(__dirname+"/uploads/file.jpg")
+            //     ,
+            //     contentType:"image/png",
+            //   },
         }
     )
     user.save(user).then(res.redirect('/')).catch(err => res.status(500).send({ message: err.message || "Create operation error" }))

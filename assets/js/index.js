@@ -69,7 +69,8 @@ async function getUser() {
             "age": results[0].dob.age,
             "phonenumber": results[0].phone,
             "password": results[0].login.password,
-            "picture": "daddy.png"
+            "picture": "daddy.png",
+            
         })
     }).then(response => {
         if (response.redirected) {
@@ -106,11 +107,27 @@ function sendData(e) {
                 return;
             }
          
-            
+           
+            searchResults.innerHTML+=`<table class="table">
+            <caption><h2>Search Results</h2></caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Profile</th>           
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr> 
+            </thead>
+        
+         </table>`
             payload.forEach(element => {
-                 var roh=element.img.data;
+              
    
-                searchResults.innerHTML += `<tr><td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
+                searchResults.innerHTML += `<tr>   <td><img src="${element.thumbnail}" alt=""></td>
+                <td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
                     <a href="/updateUser?id=${element._id}" class="btn border-shadow update">
                         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
                     </a>
