@@ -24,6 +24,11 @@ const signUpTemplate = new mongoose.Schema(
     },
     phone: String,
     picture: String,
+    thumbnail: String
+    // img:{
+    //     data:Buffer,
+    //     contentType:String,
+    //   }
 }
 );
 
