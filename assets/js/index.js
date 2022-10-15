@@ -105,7 +105,11 @@ function sendData(e) {
                 searchResults.innerHTML = '<p>Sorry no users found</p>';
                 return;
             }
+         
+            
             payload.forEach(element => {
+                 var roh=element.img.data;
+   
                 searchResults.innerHTML += `<tr><td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
                     <a href="/updateUser?id=${element._id}" class="btn border-shadow update">
                         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>

@@ -4,10 +4,11 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const connectDB = require('./server/database/connection')
 const cors = require('cors')
-
+const { use } = require('./server/routes/router')
+const dotenv = require('dotenv')
 const app = express()
 
-// dotenv.config({path:'config.env'})
+dotenv.config({path:'config.env'})
 const PORT = process.env.PORT||8080
 
 app.use(morgan("tiny"))

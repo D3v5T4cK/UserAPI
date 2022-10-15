@@ -9,6 +9,11 @@
             </div>
             <div class="form-title text-center">
                 <h2 class="text-dark">New User</h2>
+                <form action="/api/profileimg" method="POST" enctype="multipart/form-data">
+                    <label >Upload image</label>
+                    <input type="file" name="file"class='form-control' id="file">
+                    <button type="submit">s</button>
+                  </form>
                 <span class="text-light">Fill the below form to add a new user</span>
             </div>
             <%- include('include/_form') %>

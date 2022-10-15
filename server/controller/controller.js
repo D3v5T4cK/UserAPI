@@ -1,4 +1,5 @@
 const signUpTemplateCopy = require('../model/model')
+const fs=require('fs');
 
 exports.create = (req, res) => {
     if (!req.body) {
@@ -28,7 +29,12 @@ exports.create = (req, res) => {
                 age: req.body.age,
             },
             phone: req.body.phonenumber,
-            picture: req.body.picture
+            picture: req.body.picture,
+            img:{
+                data:fs.readFileSync(__dirname+"/uploads/file.jpg")
+                ,
+                contentType:"image/png",
+              },
         }
     )
     user.save(user).then(res.redirect('/')).catch(err => res.status(500).send({ message: err.message || "Create operation error" }))

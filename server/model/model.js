@@ -24,6 +24,10 @@ const signUpTemplate = new mongoose.Schema(
     },
     phone: String,
     picture: String,
+    img:{
+        data:Buffer,
+        contentType:String,
+      }
 }
 );
 
