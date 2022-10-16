@@ -1,6 +1,7 @@
 <%- include('include/_header') %>
     <main id="site-main">
         <div class="container">
+            <img class=""style="border-radius: 50%;  object-position: center;width: 10%; display: block;margin-left: auto;margin-right: auto;"src="<%=user.thumbnail%> " alt="">
             <div class="box-nav d-flex justify-between">
                 <div class="filter">
                     <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
@@ -12,6 +13,10 @@
             </div>
             <form id="update_user">
                 <div class="new_user">
+                    <div class="form-group">
+                        <label for="link" class="text-light">Edit Profile</label>
+                        <input type="text" name="first" id="thumbnail" value="<%= user.thumbnail%>">
+                    </div>
                     <div class="form-group">
                         <label for="name" class="text-light">First Name</label>
                         <input type="text" name="first" id="first" value="<%= user.name.first%>">
@@ -91,7 +96,8 @@
                         "dob.age": document.getElementById("age").value,
                         "phone": document.getElementById("phonenumber").value,
                         "login.password": document.getElementById("password").value,
-                        "picture": "daddy.png"
+                        "picture": "daddy.png",
+                        "thumbnail":document.getElementById("thumbnail").value
                     })
                 }).then(response => {
                     if (response.redirected) {
