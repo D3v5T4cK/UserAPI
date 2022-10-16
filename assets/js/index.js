@@ -113,13 +113,13 @@ function sendData(e) {
             let payload = data.result;
             searchResults.innerHTML = '';
             if (payload.length < 1) {
-                searchResults.innerHTML = '<p>Sorry no users found</p>';
+                searchResults.innerHTML = '<p style="font-size: large;text-align: center;"><strong>Sorry no users found</strong></p>';
                 return;
             }
          
            
             searchResults.innerHTML+=`<table class="table">
-            <caption><h2>Search Results</h2></caption>
+            <caption><h2 style="color: #000;">Search Results</h2></caption>
             <thead class="thead-dark">
                 <tr>
                     <th>Profile</th>           
