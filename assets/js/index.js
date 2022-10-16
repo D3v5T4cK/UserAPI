@@ -14,7 +14,7 @@ $("#update_user").submit(function (event) {
 
 
     var request = {
-        "url": `https://d3v5t4ck.herokuapp.com/api/users/${data.id}`,
+        "url": `https://user4p1.herokuapp.com/api/users/${data.id}`,
         "method": "PUT",
         "data": data
     }
@@ -31,7 +31,7 @@ if (window.location.pathname == "/") {
         var id = $(this).attr("data-id")
 
         var request = {
-            "url": `https://d3v5t4ck.herokuapp.com/api/users/${id}`,
+            "url": `https://user4p1.herokuapp.com/api/users/${id}`,
             "method": "DELETE"
         }
 
@@ -136,7 +136,7 @@ function sendData(e) {
             payload.forEach(element => {
               
    
-                searchResults.innerHTML += `<tr>   <td><img src="${element.thumbnail}" alt=""></td>
+                searchResults.innerHTML += `<tr>   <td><img style="border-radius: 28px; height:55px;width: 55px;"src="${element.thumbnail}" alt=""></td>
                 <td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
                     <a  href="/updateUser?id=${element._id} " name="ss"value="${element._id}"class="btn border-shadow update">
                         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
