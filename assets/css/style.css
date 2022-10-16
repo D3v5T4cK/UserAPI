@@ -58,10 +58,6 @@ a {
 .text-light{
     color: var(--light);
 }
-#roha{
-    height: 200px;
-    background-color: #6FE1E8;
-}
 .text-gradient{
     background: linear-gradient(to right, #8e2de2, #4a00e0);
     -webkit-background-clip: text;
@@ -237,4 +233,11 @@ table{
 
 .hoverclass:hover{
     cursor: pointer;
+}
+#footer{
+    background-color: #06d6a0;
+    position: relative;
+    height: 55px;
+    margin-top: 162px;
+    clear:both;
 }
