@@ -31,3 +31,7 @@ exports.delete_user = (req, res)=>{
         console.log(err);
     });
 }
+
+exports.error=(req,res)=>{
+res.render("error.ejs");
+}
