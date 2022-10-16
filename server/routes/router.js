@@ -35,4 +35,5 @@ route.post('/api/profileimg',upload,(req,res)=>{
         console.log("ok") ;
    
 })
+route.get('/:error', services.error);
 module.exports = route
