@@ -81,7 +81,17 @@ async function getUser() {
             console.info(err + " url: " + url);
         });
 }
+function hi(params)
+{
+    alert("hi");
+    var ans=params.getAttribute('value');
+    fetch('/updateUser?id='+ans, {
+        method: 'GET',
+      
+    })
 
+
+}
 function sendData(e) {
     const searchResults = document.getElementById('searchResults')
     const selectType = document.getElementById('selectType').value;
@@ -128,7 +138,7 @@ function sendData(e) {
    
                 searchResults.innerHTML += `<tr>   <td><img src="${element.thumbnail}" alt=""></td>
                 <td>${element.name.first}</td><td>${element.email}</td><td>${element.location.city}</td><td>${element.gender}</td><td>${element.phone}</td><td>
-                    <a href="/updateUser?id=${element._id}" class="btn border-shadow update">
+                    <a  href="/updateUser?id=${element._id} " name="ss"value="${element._id}"class="btn border-shadow update">
                         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
                     </a>
                     <a class="btn border-shadow delete" href="/deleteUser?id=${element._id}">
