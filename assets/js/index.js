@@ -14,7 +14,7 @@ $("#update_user").submit(function (event) {
 
 
     var request = {
-        "url": `https://user4p1.herokuapp.com/api/users/${data.id}`,
+        "url": `https://d3v5t4ck.herokuapp.com/api/users/${data.id}`,
         "method": "PUT",
         "data": data
     }
@@ -31,7 +31,7 @@ if (window.location.pathname == "/") {
         var id = $(this).attr("data-id")
 
         var request = {
-            "url": `https://user4p1.herokuapp.com/api/users/${id}`,
+            "url": `https://d3v5t4ck.herokuapp.com/api/users/${id}`,
             "method": "DELETE"
         }
 
