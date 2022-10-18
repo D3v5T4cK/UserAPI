@@ -119,31 +119,31 @@ exports.search = async (request, response)=>{
     escapeRegExp(search)
     
     if (type == "name") {
-        const users = await signUpTemplateCopy.find({ "name.first": {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ "name.first": {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "email") {
-        const users = await signUpTemplateCopy.find({ email: {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ email: {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "phone") {
-        const users = await signUpTemplateCopy.find({ phone: {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ phone: {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "gender") {
-        const users = await signUpTemplateCopy.find({ gender: {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ gender: {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "location") {
-        const users = await signUpTemplateCopy.find({ "location.postcode": {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ "location.postcode": {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "address") {
-        const users = await signUpTemplateCopy.find({ "location.city": {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ "location.city": {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
     if (type == "dob") {
-        const users = await signUpTemplateCopy.find({ "dob.date": {$regex: search.toString()} }).exec();
+        let users = await signUpTemplateCopy.find({ "dob.date": {$regex: search.toString()} }).exec();
         response.send({ result: users })
     }
 }
