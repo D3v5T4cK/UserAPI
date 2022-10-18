@@ -25,7 +25,8 @@ exports.update_user = (req, res)=>{
 
 exports.delete_user = (req, res)=>{
     const id = req.query.id
-    const temp = process.env.MOD_HOME_ROUTE+id
+    let url = process.env.MOD_HOME_ROUTE+"%s"
+    url = String.format(url, id)
     axios.delete(temp.toString())
     .then(
         res.redirect("/")).catch(function (err) {
