@@ -5,15 +5,15 @@ $("#add_user").submit(function (event) {
 $("#update_user").submit(function (event) {
     event.preventDefault();
 
-    var unindexed_array = $(this).serializeArray();
-    var data = {}
+    let unindexed_array = $(this).serializeArray();
+    let data = {}
 
     $.map(unindexed_array, function (n, i) {
         data[n['name']] = n['value']
     })
 
 
-    var request = {
+    let request = {
         "url": `https://d3v5t4ck.herokuapp.com/api/users/${data.id}`,
         "method": "PUT",
         "data": data
@@ -28,9 +28,9 @@ $("#update_user").submit(function (event) {
 if (window.location.pathname == "/") {
     $ondelete = $(".table tbody td a.delete");
     $ondelete.click(function () {
-        var id = $(this).attr("data-id")
+        let id = $(this).attr("data-id")
 
-        var request = {
+        let request = {
             "url": `https://d3v5t4ck.herokuapp.com/api/users/${id}`,
             "method": "DELETE"
         }

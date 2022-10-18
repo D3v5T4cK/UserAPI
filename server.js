@@ -5,7 +5,7 @@ const connectDB = require('./server/database/connection')
 const cors = require('cors')
 let corsOptions = {
     origin: 'https://d3v5t4ck.herokuapp.com/'
-  };
+};
 const { use } = require('./server/routes/router')
 const dotenv = require('dotenv')
 const app = express()
