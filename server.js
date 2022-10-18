@@ -9,6 +9,7 @@ let corsOptions = {
 const { use } = require('./server/routes/router')
 const dotenv = require('dotenv')
 const app = express()
+app.disable("x-powered-by");
 
 dotenv.config({path:'config.env'})
 const PORT = process.env.PORT||8080
