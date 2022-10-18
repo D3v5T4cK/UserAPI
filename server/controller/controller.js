@@ -59,13 +59,13 @@ exports.find = (req, res) => {
         signUpTemplateCopy.findById(id)
             .then(data =>{
                 if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
+                    res.status(404).send({ message : "User not found!"})
                 }else{
                     res.send(data)
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Error retrieving user with id " + id})
+                res.status(500).send({ message: "Error retrieving user details"})
             })
     }
     else{
@@ -81,7 +81,7 @@ exports.update = (req, res) => {
     signUpTemplateCopy.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
     .then(data => {
         if(!data){
-            res.status(404).send({message: `Can't update user with ${id}`})
+            res.status(404).send({message: `Can't update user data`})
         }
         else{
             res.redirect('/')
@@ -95,7 +95,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
     signUpTemplateCopy.findByIdAndDelete(id).then(data => {
         if(!data){
-            res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
+            res.status(404).send({ message : `Cannot Delete user. Maybe user doesn't exist`})
         }else{
             res.send({
                 message : "User was deleted successfully!"
@@ -104,7 +104,7 @@ exports.delete = (req, res) => {
     })
     .catch(err =>{
         res.status(500).send({
-            message: "Could not delete User with id=" + id
+            message: "Could not delete user"
         });
     });
 }
