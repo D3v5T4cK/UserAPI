@@ -49,7 +49,6 @@ async function getUser() {
     alert("Random User added from API");
     const re = await fetch('https://randomuser.me/api');
     const { results } = await re.json();
-    console.log(results);
     fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +68,6 @@ async function getUser() {
             "age": results[0].dob.age,
             "phonenumber": results[0].phone,
             "password": results[0].login.password,
-            "picture": "daddy.png",
             
         })
     }).then(response => {
@@ -81,17 +79,8 @@ async function getUser() {
             console.info(err + " url: " + url);
         });
 }
-function hi(params)
-{
-    alert("hi");
-    var ans=params.getAttribute('value');
-    fetch('/updateUser?id='+ans, {
-        method: 'GET',
-      
-    })
 
 
-}
 function sendData(e) {
     const searchResults = document.getElementById('searchResults')
     const selectType = document.getElementById('selectType').value;

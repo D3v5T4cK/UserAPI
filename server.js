@@ -1,6 +1,5 @@
 const express = require('express')
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
 const path = require('path')
 const connectDB = require('./server/database/connection')
 const cors = require('cors')

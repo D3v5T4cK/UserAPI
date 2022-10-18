@@ -137,7 +137,6 @@ table{
 
 }
 
-/*  add user & update user template */
 .form-title{
     margin-top: 2em;
 }
@@ -172,7 +171,6 @@ table{
     margin: 1em 2em;
 }
 
-/* adding style to radio buttons */
 .radio input[type='radio']{
     position: absolute;
     opacity: 0;
