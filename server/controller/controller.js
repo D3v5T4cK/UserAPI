@@ -8,12 +8,12 @@ exports.create = async (req, res) => {
       }
     const gen=req.body.gender.toLowerCase(); 
     if(gen=="male"){
-        const {data} = await axios.get('https://randomuser.me/api/?gender=male')
+        const {data} = await axios.get(process.env.API_MALE)
         details = data.results[0];
     
     }
     if(gen=='female'){
-        const {data} = await axios.get('https://randomuser.me/api/?gender=female')
+        const {data} = await axios.get(process.env.API_FEMALE)
         details = data.results[0];
         
     }
