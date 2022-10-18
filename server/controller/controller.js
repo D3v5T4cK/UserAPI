@@ -112,32 +112,35 @@ exports.delete = (req, res) => {
 exports.search = async (request, response)=>{
     let type = request.body.type.trim();
     let search = request.body.search.trim();
+    let l = '^'
+    let r = '.*'
+    const regex = new RegExp(l+search+r, 'i')
     if (type == "name") {
-        let users = await signUpTemplateCopy.find({ "name.first": {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ "name.first": {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "email") {
-        let users = await signUpTemplateCopy.find({ email: {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ email: {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "phone") {
-        let users = await signUpTemplateCopy.find({ phone: {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ phone: {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "gender") {
-        let users = await signUpTemplateCopy.find({ gender: {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ gender: {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "location") {
-        let users = await signUpTemplateCopy.find({ "location.postcode": {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ "location.postcode": {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "address") {
-        let users = await signUpTemplateCopy.find({ "location.city": {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ "location.city": {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "dob") {
-        let users = await signUpTemplateCopy.find({ "dob.date": {$regex: search} }).exec();
+        let users = await signUpTemplateCopy.find({ "dob.date": {$regex: regex} }).exec();
         response.send({ result: users })
     }
 }
