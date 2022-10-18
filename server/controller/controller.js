@@ -112,8 +112,9 @@ exports.delete = (req, res) => {
 exports.search = async (request, response)=>{
     let type = request.body.type.trim();
     let search = request.body.search.trim();
+    var regex = new RegExp('^'+search+'.*', 'i')
     if (type == "name") {
-        let users = await signUpTemplateCopy.find({ "name.first": {$regex: new RegExp('^'+search+'.*', 'i')} }).exec();
+        let users = await signUpTemplateCopy.find({ "name.first": {$regex: regex} }).exec();
         response.send({ result: users })
     }
     if (type == "email") {
